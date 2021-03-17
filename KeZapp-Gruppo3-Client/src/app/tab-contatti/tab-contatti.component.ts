@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { Chat } from '../chat';
 
 @Component({
@@ -8,8 +8,9 @@ import { Chat } from '../chat';
 })
 export class TabContattiComponent implements OnInit {
 
-  nickName: string;
-  contatti: Chat[];
+  @Input() nickname: string;
+  @Input() contatti: Chat[];
+  @Output() add: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
 
@@ -17,7 +18,7 @@ export class TabContattiComponent implements OnInit {
   }
 
   invia() {
-
+    this.add.emit(this.nickname);
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-messaggio',
@@ -7,15 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessaggioComponent implements OnInit {
 
-  messaggio: string;
+  @Input() messaggio: string;
+  @Output() mess: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  invia() {
-    
+  inviaTutti() {
+    this.mess.emit(this.messaggio);
   }
-
 }

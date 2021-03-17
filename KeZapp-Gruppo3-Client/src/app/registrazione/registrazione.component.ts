@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-registrazione',
@@ -7,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrazioneComponent implements OnInit {
 
-  nickName: string;
+  @Input() nickname: string;
+  @Output() reg: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
 
@@ -15,7 +18,7 @@ export class RegistrazioneComponent implements OnInit {
   }
 
   registra() {
-
+    this.reg.emit(this.nickname);
   }
 
 }
