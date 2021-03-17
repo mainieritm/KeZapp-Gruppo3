@@ -11,4 +11,5 @@ public interface MessaggioRepository extends JpaRepository<Messaggio, Long> {
     // query che restituisce la lista messaggi
     List<Messaggio> findByDestinatarioEqualsOrDestinatarioIsNull(String s);
     
+    
 }

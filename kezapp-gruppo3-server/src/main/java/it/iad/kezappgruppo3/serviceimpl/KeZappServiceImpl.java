@@ -1,22 +1,24 @@
 package it.iad.kezappgruppo3.serviceimpl;
 
+import it.iad.kezappgruppo3.dto.InviaMessaggioDto;
 import it.iad.kezappgruppo3.dto.RegistrazioneDto;
+import it.iad.kezappgruppo3.dto.RichiediMessaggioDto;
 import it.iad.kezappgruppo3.dto.RichiediRegistrazioneDto;
 import it.iad.kezappgruppo3.model.Chat;
 import it.iad.kezappgruppo3.model.Messaggio;
 import it.iad.kezappgruppo3.repository.ChatRepository;
 import it.iad.kezappgruppo3.repository.MessaggioRepository;
-import it.iad.kezappgruppo3.service.ChatService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import it.iad.kezappgruppo3.service.KeZappService;
 
 @Service
-public class ChatServiceImpl implements ChatService {
+public class KeZappServiceImpl implements KeZappService {
 
     @Autowired
     ChatRepository chatRepository;
-    
+
     @Autowired
     MessaggioRepository messaggioRepository;
 
@@ -24,7 +26,7 @@ public class ChatServiceImpl implements ChatService {
     public RegistrazioneDto registrazione(RichiediRegistrazioneDto dto) {
         //Cerco dentro Chat se esiste già il nickName
         List<Chat> contattiList = chatRepository.findByNicknameEquals(dto.getNickname());
-        if (contattiList.size() == 0) {
+        if (contattiList.isEmpty()) {
             //Nickname non esiste e quindi creo un nuovo utente
             Chat chat = new Chat();
             chat.setNickname(dto.getNickname());
@@ -40,19 +42,49 @@ public class ChatServiceImpl implements ChatService {
             contatti = getContattiList();
             List<Messaggio> messaggi;
             messaggi = getMessaggiList(dto.getNickname());
-            
+
             return new RegistrazioneDto(contatti, messaggi, sessione.toString());
         } else {
             return new RegistrazioneDto();
         }
-        
     }
-    
-    private List<Chat> getContattiList(){
+
+    @Override
+    public List<Chat> getContattiList() {
         return chatRepository.findAll();
     }
-    
-    private List<Messaggio> getMessaggiList(String nickName){
+
+    @Override
+    public RegistrazioneDto inviaTutti(InviaMessaggioDto dto) {
+        Messaggio mess = new Messaggio();
+        mess.setTesto(dto.getMessaggio());
+//      seleziono il mittente dalla tabello chat tramite la sessione
+        Chat chat = chatRepository.getOne(Long.parseLong(dto.getSessione()));
+        mess.setAliasMittente(chat.getNickname());
+        messaggioRepository.save(mess);
+        return new RegistrazioneDto(getContattiList(), getMessaggiList(chat.getNickname()), chat.getSessione());
+    }
+
+    @Override
+    public List<Messaggio> getMessaggiList(String nickName) {
         return messaggioRepository.findByDestinatarioEqualsOrDestinatarioIsNull(nickName);
+    }
+
+    @Override
+    public RegistrazioneDto inviaUno(InviaMessaggioDto dto) {
+        Messaggio mess = new Messaggio();
+        mess.setTesto(dto.getMessaggio());
+//      seleziono il mittente dalla tabello chat tramite la sessione
+        Chat chat = chatRepository.getOne(Long.parseLong(dto.getSessione()));
+        mess.setAliasMittente(chat.getNickname());
+        mess.setAliasDestinatario(dto.getDestinatario());
+        messaggioRepository.save(mess);
+        return new RegistrazioneDto(getContattiList(), getMessaggiList(chat.getNickname()), chat.getSessione());
+    }
+
+    @Override
+    public RegistrazioneDto aggiorna(RichiediMessaggioDto dto) {
+        Chat chat = chatRepository.getOne(Long.parseLong(dto.getSessione()));
+        return new RegistrazioneDto(getContattiList(), getMessaggiList(chat.getNickname()), chat.getSessione());
     }
 }
