@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'KeZapp-Gruppo3-Client';
+  
+  registrazioneVisible: boolean;
+  chatVisible: boolean;
+  
 }

@@ -1,0 +1,11 @@
+Contatti
+<table>
+    <tr *ngFor="let c of contatti">
+        <td>
+            {{c.nickName}}
+        </td>
+        <td>
+            <button (click)="invia(c)">Invia</button>
+        </td>
+    </tr>
+</table>
