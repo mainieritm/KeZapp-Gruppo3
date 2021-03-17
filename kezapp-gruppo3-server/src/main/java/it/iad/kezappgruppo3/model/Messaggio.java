@@ -17,18 +17,18 @@ public class Messaggio implements Serializable {
     private String testo;
 
     @Column
-    private String aliasDestinatario;
+    private String destinatario;
 
     @Column
-    private String aliasMittente;
+    private String mittente;
 
     public Messaggio() {
     }
 
     public Messaggio(String testo, String aliasDestinatario, String aliasMittente) {
         this.testo = testo;
-        this.aliasDestinatario = aliasDestinatario;
-        this.aliasMittente = aliasMittente;
+        this.destinatario = aliasDestinatario;
+        this.mittente = aliasMittente;
     }
 
     public Long getId() {
@@ -48,18 +48,18 @@ public class Messaggio implements Serializable {
     }
 
     public String getAliasDestinatario() {
-        return aliasDestinatario;
+        return destinatario;
     }
 
     public void setAliasDestinatario(String aliasDestinatario) {
-        this.aliasDestinatario = aliasDestinatario;
+        this.destinatario = aliasDestinatario;
     }
 
     public String getAliasMittente() {
-        return aliasMittente;
+        return mittente;
     }
 
     public void setAliasMittente(String aliasMittente) {
-        this.aliasMittente = aliasMittente;
+        this.mittente = aliasMittente;
     }
 }
