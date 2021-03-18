@@ -1,12 +1,12 @@
 Messaggi ricevuti
 <button (click)="aggiorna()">Aggiorna</button>
 <table>
-    <tr>
+    <tr *ngFor="let m of messaggi">
         <td>
-            {{mittente}}
+            {{m.mittente}}
         </td>
         <td>
-            {{testo}}
+            {{m.testo}}
         </td>
     </tr>
 </table>

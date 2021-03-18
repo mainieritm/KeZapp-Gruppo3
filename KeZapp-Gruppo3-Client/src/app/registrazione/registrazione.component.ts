@@ -1,6 +1,4 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-
 
 @Component({
   selector: 'app-registrazione',

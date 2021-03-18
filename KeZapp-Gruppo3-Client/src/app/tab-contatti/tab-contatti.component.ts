@@ -10,15 +10,15 @@ export class TabContattiComponent implements OnInit {
 
   @Input() nickname: string;
   @Input() contatti: Chat[];
-  @Output() add: EventEmitter<string> = new EventEmitter<string>();
+  @Output() inv: EventEmitter<Chat> = new EventEmitter<Chat>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  invia() {
-    this.add.emit(this.nickname);
+  invia(c: Chat) {
+    this.inv.emit(c);
   }
 
 }

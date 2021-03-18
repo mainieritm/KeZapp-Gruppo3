@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Chat } from '../chat';
+import { Messaggio } from '../messaggio';
 
 @Component({
   selector: 'app-tab-messaggi',
@@ -7,8 +9,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TabMessaggiComponent implements OnInit {
 
-  @Input() mittente: string;
-  @Input() testo: string;
+  @Input() messaggi: Messaggio[] = [];
+  @Output() chat: EventEmitter<Chat> = new EventEmitter<Chat>();
 
   constructor() { }
 
@@ -16,7 +18,7 @@ export class TabMessaggiComponent implements OnInit {
   }
 
   aggiorna() {
-    
+    this.chat.emit();
   }
 
 }

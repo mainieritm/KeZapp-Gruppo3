@@ -2,7 +2,7 @@ package it.iad.kezappgruppo3.controller;
 
 import it.iad.kezappgruppo3.dto.InviaMessaggioDto;
 import it.iad.kezappgruppo3.dto.RegistrazioneDto;
-import it.iad.kezappgruppo3.dto.RichiediMessaggioDto;
+import it.iad.kezappgruppo3.dto.RichiediMessaggiDto;
 import it.iad.kezappgruppo3.dto.RichiediRegistrazioneDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -39,7 +39,7 @@ public class KezappController {
 
     @RequestMapping("/aggiorna")
     @ResponseBody
-    public RegistrazioneDto aggiorna(@RequestBody RichiediMessaggioDto dto) {
+    public RegistrazioneDto aggiorna(@RequestBody RichiediMessaggiDto dto) {
         return keZappService.aggiorna(dto);
     }
 }

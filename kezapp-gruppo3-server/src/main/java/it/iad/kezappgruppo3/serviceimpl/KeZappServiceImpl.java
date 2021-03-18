@@ -2,7 +2,7 @@ package it.iad.kezappgruppo3.serviceimpl;
 
 import it.iad.kezappgruppo3.dto.InviaMessaggioDto;
 import it.iad.kezappgruppo3.dto.RegistrazioneDto;
-import it.iad.kezappgruppo3.dto.RichiediMessaggioDto;
+import it.iad.kezappgruppo3.dto.RichiediMessaggiDto;
 import it.iad.kezappgruppo3.dto.RichiediRegistrazioneDto;
 import it.iad.kezappgruppo3.model.Chat;
 import it.iad.kezappgruppo3.model.Messaggio;
@@ -83,7 +83,7 @@ public class KeZappServiceImpl implements KeZappService {
     }
 
     @Override
-    public RegistrazioneDto aggiorna(RichiediMessaggioDto dto) {
+    public RegistrazioneDto aggiorna(RichiediMessaggiDto dto) {
         Chat chat = chatRepository.getOne(Long.parseLong(dto.getSessione()));
         return new RegistrazioneDto(getContattiList(), getMessaggiList(chat.getNickname()), chat.getSessione());
     }

@@ -1,13 +1,13 @@
 package it.iad.kezappgruppo3.dto;
 
-public class RichiediMessaggioDto {
+public class RichiediMessaggiDto {
 
     private String sessione;
 
-    public RichiediMessaggioDto() {
+    public RichiediMessaggiDto() {
     }
 
-    public RichiediMessaggioDto(String sessione) {
+    public RichiediMessaggiDto(String sessione) {
         this.sessione = sessione;
     }
 
