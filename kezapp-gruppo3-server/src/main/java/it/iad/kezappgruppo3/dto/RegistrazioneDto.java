@@ -2,13 +2,14 @@ package it.iad.kezappgruppo3.dto;
 
 import it.iad.kezappgruppo3.model.Chat;
 import it.iad.kezappgruppo3.model.Messaggio;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RegistrazioneDto {
 
-    private List<Chat> contatti;
-    private List<Messaggio> messaggi;
-    private String sessione;
+    private List<Chat> contatti = new ArrayList();
+    private List<Messaggio> messaggi = new ArrayList();
+    private String sessione = "";
 
     public RegistrazioneDto() {
     }

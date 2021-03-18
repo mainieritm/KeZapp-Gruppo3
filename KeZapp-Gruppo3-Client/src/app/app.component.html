@@ -1,18 +1,18 @@
 <router-outlet></router-outlet>
 <br>
 <br>
-<app-registrazione *ngIf= "!registrazioneVisible" (reg) = "registra($event)"></app-registrazione>
+<app-registrazione *ngIf="!reg.sessione" (reg)="registra($event)"></app-registrazione>
 <br>
 <br>
 {{risposta}}
 <br>
 <br>
-<div *ngIf= "chatVisible">
-    <app-messaggio [messaggio] = "messaggio" (mess) = "inviaTutti($event)"></app-messaggio>
+<div *ngIf="reg.sessione">
+    <app-messaggio [messaggio]="messaggio" (mess)="inviaTutti($event)"></app-messaggio>
     <br>
     <br>
-    <app-tab-contatti [contatti] = "contatti" (inv) = "invia($event)"></app-tab-contatti>
+    <app-tab-contatti [contatti]="contatti" (inv)="invia($event)"></app-tab-contatti>
     <br>
     <br>
-    <app-tab-messaggi [messaggi] = "messaggi" (chat)= "aggiorna($event)"></app-tab-messaggi>
+    <app-tab-messaggi [messaggi]="messaggi" (chat)="aggiorna($event)"></app-tab-messaggi>
 </div>

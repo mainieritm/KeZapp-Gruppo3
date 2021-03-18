@@ -69,17 +69,6 @@ export class AppComponent {
       this.chat.chat.sessione = this.reg.sessione;
       console.log(this.reg.sessione + " sessione");
       this.chat.chat.nickname = n;
-      if (this.reg.sessione != "" || this.reg.sessione != null) {
-        this.chat.chat.sessione = this.reg.sessione;
-        this.chatVisible = true;
-        this.registrazioneVisible = true;
-        console.log("sessione non null");
-      } else {
-        this.chatVisible = false;
-        this.registrazioneVisible = false;
-        console.log("sessione null");
-        this.risposta = "Nickname già in uso, riprova";
-      }
     });
   }
 
