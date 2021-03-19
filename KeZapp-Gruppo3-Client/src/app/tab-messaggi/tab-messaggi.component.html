@@ -1,7 +1,16 @@
 Messaggi ricevuti
 <button (click)="aggiorna()">Aggiorna</button>
 <table>
+    <tr>
+        <th>
+            Mittente
+        </th>
+        <th>
+            Messaggio
+        </th>
+    </tr>
     <tr *ngFor="let m of messaggi">
+        
         <td>
             {{m.mittente}}
         </td>

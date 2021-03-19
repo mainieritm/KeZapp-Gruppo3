@@ -1,9 +1,6 @@
 <router-outlet></router-outlet>
-<br>
-<br>
+<h1 *ngIf="reg.sessione">Benvenuto {{chat.chat.nickname}}</h1>
 <app-registrazione *ngIf="!reg.sessione" (reg)="registra($event)"></app-registrazione>
-<br>
-<br>
 {{risposta}}
 <br>
 <br>

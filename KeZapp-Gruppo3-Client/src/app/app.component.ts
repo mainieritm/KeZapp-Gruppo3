@@ -20,7 +20,6 @@ export class AppComponent {
 
   registrazioneVisible: boolean;
   chatVisible: boolean;
-  messaggio: string;
   messaggi: Messaggio[] = [];
   reg: RegistrazioneDto = new RegistrazioneDto();
   contatti: Chat[] = [];
@@ -74,7 +73,7 @@ export class AppComponent {
 
   invia(c: Chat) {
     let dto: InviaMessaggioDto = new InviaMessaggioDto();
-    dto.messaggio = this.messaggio;
+    dto.messaggio = this.chat.messaggio;
     dto.sessione = this.chat.chat.sessione;
     dto.destinatario = c.nickname;
     let oss: Observable<RegistrazioneDto> = this.http.post<RegistrazioneDto>("http://localhost:8080/invia-uno", dto);
@@ -83,7 +82,7 @@ export class AppComponent {
       this.contatti = this.reg.contatti;
       this.messaggi = this.reg.messaggi;
     });
-    this.messaggio = "";
+    this.chat.messaggio = "";
     this.risposta = "Messaggio inviato a " + c.nickname;
   }
 }

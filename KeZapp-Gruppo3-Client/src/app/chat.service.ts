@@ -6,7 +6,9 @@ import { Chat } from './chat';
 })
 export class ChatService {
 
-  chat: Chat;
+  messaggio: string;
+
+  chat: Chat = new Chat();
 
   constructor() { }
 }

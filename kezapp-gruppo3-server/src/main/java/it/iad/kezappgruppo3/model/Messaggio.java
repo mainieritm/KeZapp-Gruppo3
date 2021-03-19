@@ -25,10 +25,10 @@ public class Messaggio implements Serializable {
     public Messaggio() {
     }
 
-    public Messaggio(String testo, String aliasDestinatario, String aliasMittente) {
+    public Messaggio(String testo, String destinatario, String mittente) {
         this.testo = testo;
-        this.destinatario = aliasDestinatario;
-        this.mittente = aliasMittente;
+        this.destinatario = destinatario;
+        this.mittente = mittente;
     }
 
     public Long getId() {
@@ -47,19 +47,19 @@ public class Messaggio implements Serializable {
         this.testo = testo;
     }
 
-    public String getAliasDestinatario() {
+    public String getDestinatario() {
         return destinatario;
     }
 
-    public void setAliasDestinatario(String aliasDestinatario) {
-        this.destinatario = aliasDestinatario;
+    public void setDestinatario(String destinatario) {
+        this.destinatario = destinatario;
     }
 
-    public String getAliasMittente() {
+    public String getMittente() {
         return mittente;
     }
 
-    public void setAliasMittente(String aliasMittente) {
-        this.mittente = aliasMittente;
+    public void setMittente(String mittente) {
+        this.mittente = mittente;
     }
 }

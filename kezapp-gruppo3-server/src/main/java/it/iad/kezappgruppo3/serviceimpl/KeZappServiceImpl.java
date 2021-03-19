@@ -60,7 +60,7 @@ public class KeZappServiceImpl implements KeZappService {
         mess.setTesto(dto.getMessaggio());
 //      seleziono il mittente dalla tabello chat tramite la sessione
         Chat chat = chatRepository.findById(Long.parseLong(dto.getSessione())).get();
-        mess.setAliasMittente(chat.getNickname());
+        mess.setMittente(chat.getNickname());
         messaggioRepository.save(mess);
         return new RegistrazioneDto(getContattiList(), getMessaggiList(chat.getNickname()), chat.getSessione());
     }
@@ -76,8 +76,8 @@ public class KeZappServiceImpl implements KeZappService {
         mess.setTesto(dto.getMessaggio());
 //      seleziono il mittente dalla tabello chat tramite la sessione
         Chat chat = chatRepository.findById(Long.parseLong(dto.getSessione())).get();
-        mess.setAliasMittente(chat.getNickname());
-        mess.setAliasDestinatario(dto.getDestinatario());
+        mess.setMittente(chat.getNickname());
+        mess.setDestinatario(dto.getDestinatario());
         messaggioRepository.save(mess);
         return new RegistrazioneDto(getContattiList(), getMessaggiList(chat.getNickname()), chat.getSessione());
     }

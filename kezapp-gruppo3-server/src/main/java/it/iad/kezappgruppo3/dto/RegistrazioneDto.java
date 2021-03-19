@@ -7,8 +7,8 @@ import java.util.List;
 
 public class RegistrazioneDto {
 
-    private List<Chat> contatti = new ArrayList();
-    private List<Messaggio> messaggi = new ArrayList();
+    private List<Chat> contatti = new ArrayList<>();
+    private List<Messaggio> messaggi = new ArrayList<>();
     private String sessione = "";
 
     public RegistrazioneDto() {
